@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>隊員管理</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<h1>👮‍♂️ 隊員管理</h1>
+
+<div class="card">
+    <a href="/guard-form">
+    <button>＋ 隊員登録</button>
+    </a>
+</div>
+
+<div class="card">
+
+<table width="100%">
+
+    <tr>
+        <th>ID</th>
+        <th>氏名</th>
+        <th>電話番号</th>
+        <th>資格</th>
+        <th>状態</th>
+        <th>操作</th>
+    </tr>
+
+    {% for guard in guards %}
+    <tr>
+        <td>{{ guard.id }}</td>
+        <td>{{ guard.name }}</td>
+        <td>{{ guard.phone }}</td>
+        <td>{{ guard.qualification }}</td>
+        <td>{{ guard.status }}</td>
+
+        <td>
+
+            <a href="/edit/{{ guard.id }}">
+                編集
+            </a>
+
+            <a href="/delete/{{ guard.id }}"
+            onclick="return confirm('本当に削除しますか？')">
+                削除
+            </a>
+
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>

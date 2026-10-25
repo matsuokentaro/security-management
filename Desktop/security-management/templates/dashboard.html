@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ダッシュボード</title>
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- サイドバー -->
+    <div class="sidebar">
+
+        <h2>🚓 警備管理</h2>
+
+        <a href="/dashboard" class="active">📊 ダッシュボード</a>
+
+        <a href="/guards">👮 隊員管理</a>
+
+        <a href="/sites">🚧 現場管理</a>
+
+        <a href="/shifts">📅 シフト管理</a>
+
+    </div>
+
+        <!-- メイン -->
+        <div class="main-content">
+
+            <h1>🚓 ダッシュボード</h1>
+
+            <h2>管理メニュー</h2>
+
+            <div class="dashboard-cards">
+
+                <a href="/guards" class="card blue">
+                    <h3>👮 隊員数</h3>
+                    <p>{{ total_guards }}</p>
+                </a>
+
+                <a href="/guards" class="card green">
+                    <h3>✅ 出勤中</h3>
+                    <p>{{ working_guards }}</p>
+                </a>
+
+                <a href="/guards" class="card orange">
+                    <h3>🏖️ 休暇</h3>
+                    <p>{{ vacation_guards }}</p>
+                </a>
+
+            </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

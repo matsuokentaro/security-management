@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>隊員編集</title>
+</head>
+<body>
+
+<h2>隊員編集</h2>
+
+<form method="POST">
+
+    <label>氏名</label>
+    <input
+        type="text"
+        name="name"
+        value="{{ guard.name }}"
+        required
+    >
+
+    <br><br>
+
+    <label>電話番号</label>
+    <input
+        type="text"
+        name="phone"
+        value="{{ guard.phone }}"
+        required
+    >
+
+    <br><br>
+
+    <label>資格</label>
+    <input
+        type="text"
+        name="qualification"
+        value="{{ guard.qualification }}"
+        required
+    >
+
+    <br><br>
+
+    <label>状態</label>
+    <input
+        type="text"
+        name="status"
+        value="{{ guard.status }}"
+        required
+    >
+
+    <br><br>
+
+    <button type="submit">
+        更新
+    </button>
+
+</form>
+
+</body>
+</html>

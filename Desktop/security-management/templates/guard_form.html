@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>隊員登録</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<h1>➕ 隊員登録</h1>
+
+<div class="card">
+
+<form method="POST">
+
+    <label>氏名</label>
+    <input type="text" name="name" required>
+
+    <label>電話番号</label>
+    <input type="text" name="phone" required>
+
+    <label>資格</label>
+    <select name="qualification">
+        <option>交通誘導2級</option>
+        <option>雑踏警備</option>
+        <option>施設警備</option>
+    </select>
+
+    <label>状態</label>
+    <select name="status">
+        <option>出勤中</option>
+        <option>休暇</option>
+        <option>待機</option>
+    </select>
+
+    <button type="submit">登録</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>
