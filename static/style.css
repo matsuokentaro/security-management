@@ -255,6 +255,14 @@ tr:hover{
     margin:0 auto;
 }
 
-
+.success-message{
+    background:#d1e7dd;
+    color:#0f5132;
+    border:1px solid #badbcc;
+    padding:12px;
+    margin-bottom:20px;
+    border-radius:8px;
+    font-weight:bold;
+}
 
 

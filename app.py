@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request, redirect
+
+from flask import Flask, render_template, request, redirect, flash
 import sqlite3
 import os
 
 app = Flask(__name__)
+app.secret_key = "security123" # CSRF保護用のキー
 
 def init_db():
 
@@ -89,6 +91,8 @@ def delete_guard(id):
     conn.commit()
     conn.close()
 
+    flash("隊員を削除しました 🗑️")
+
     return redirect("/guards")
 @app.route("/edit/<int:id>", methods=["GET", "POST"])
 def edit_guard(id):
@@ -115,6 +119,8 @@ def edit_guard(id):
 
         conn.commit()
         conn.close()
+
+        flash("隊員情報を更新しました ✏️")
 
         return redirect("/guards")
 
@@ -154,6 +160,8 @@ def guard_form():
 
         conn.commit()
         conn.close()
+        print("DEBUG: flash実行前")
+        flash("隊員を登録しました ✅")
 
         return redirect("/guards")
 
