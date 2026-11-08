@@ -200,3 +200,28 @@ select{
     background:#2563eb;
 }
 
+.table-card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#f8fafc;
+    color:#333;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    color:#333;
+    padding:12px;
+    border-bottom:1px solid #ddd;
+}
+

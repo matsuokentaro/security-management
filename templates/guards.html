@@ -9,15 +9,17 @@
 
 <div class="container">
 
-<h1>👮‍♂️ 隊員管理</h1>
+<h1>👮‍♂️ 隊員管理 TEST</h1>
 
-<div class="card">
+<div style="margin-bottom:20px;">
     <a href="/guard-form">
-    <button>＋ 隊員登録</button>
+        <button style="width:auto;">
+            ＋ 隊員登録
+        </button>
     </a>
 </div>
 
-<div class="card">
+<div class="table-card">
 
 <table width="100%">
 
@@ -40,11 +42,12 @@
 
         <td>
 
-            <a href="/edit/{{ guard.id }}">
+            <a class="action-edit" href="/edit/{{ guard.id }}">
                 編集
             </a>
 
-            <a href="/delete/{{ guard.id }}"
+            <a class="action-delete"
+            href="/delete/{{ guard.id }}"
             onclick="return confirm('本当に削除しますか？')">
                 削除
             </a>
