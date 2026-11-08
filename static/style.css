@@ -235,7 +235,7 @@ tr:hover{
     padding:6px 10px;
     border-radius:6px;
     text-decoration:none;
-    margin-right:5px;
+    margin-right:10px;
 }
 
 .action-delete{
@@ -265,4 +265,13 @@ tr:hover{
     font-weight:bold;
 }
 
+.actions{
+    text-align:center;
+    white-space:nowrap;
+}
+
+.action-column{
+    width:180px;
+    text-align:center;
+}
 
