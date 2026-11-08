@@ -226,6 +226,68 @@ def site_form():
 
     return render_template("site_form.html")
 
+@app.route("/site-edit/<int:id>", methods=["GET", "POST"])
+def edit_site(id):
+
+    conn = sqlite3.connect("database/guards.db")
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    if request.method == "POST":
+
+        site_name = request.form["site_name"]
+        address = request.form["address"]
+        manager = request.form["manager"]
+        memo = request.form["memo"]
+
+        cursor.execute("""
+        UPDATE sites
+        SET site_name = ?,
+            address = ?,
+            manager = ?,
+            memo = ?
+        WHERE id = ?
+        """, (site_name, address, manager, memo, id))
+
+        conn.commit()
+        conn.close()
+
+        flash("現場情報を更新しました ✏️")
+
+        return redirect("/sites")
+
+    cursor.execute(
+        "SELECT * FROM sites WHERE id = ?",
+        (id,)
+    )
+
+    site = cursor.fetchone()
+
+    conn.close()
+
+    return render_template(
+        "edit_site.html",
+        site=site
+    )
+
+@app.route("/site-delete/<int:id>")
+def delete_site(id):
+
+    conn = sqlite3.connect("database/guards.db")
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "DELETE FROM sites WHERE id = ?",
+        (id,)
+    )
+
+    conn.commit()
+    conn.close()
+
+    flash("現場を削除しました 🗑️")
+
+    return redirect("/sites")
+
 @app.route("/shifts")
 def shifts():
     return "<h1>シフト管理（作成中）</h1>"

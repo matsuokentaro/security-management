@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}現場編集{% endblock %}
+
+{% block content %}
+
+<h1>✏️ 現場編集</h1>
+
+<div class="form-card">
+
+<form method="POST">
+
+    <label>現場名</label>
+    <input
+        type="text"
+        name="site_name"
+        value="{{ site.site_name }}"
+        required>
+
+    <label>住所</label>
+    <input
+        type="text"
+        name="address"
+        value="{{ site.address }}"
+        required>
+
+    <label>担当者</label>
+    <input
+        type="text"
+        name="manager"
+        value="{{ site.manager }}">
+
+    <label>備考</label>
+    <input
+        type="text"
+        name="memo"
+        value="{{ site.memo }}">
+
+    <button type="submit">
+        更新
+    </button>
+
+</form>
+
+</div>
+
+{% endblock %}

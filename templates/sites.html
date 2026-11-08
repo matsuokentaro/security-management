@@ -24,6 +24,7 @@
         <th>住所</th>
         <th>担当者</th>
         <th>備考</th>
+        <th>操作</th>
     </tr>
 
     {% for site in sites %}
@@ -33,6 +34,20 @@
         <td>{{ site.address }}</td>
         <td>{{ site.manager }}</td>
         <td>{{ site.memo }}</td>
+        <td>
+        <td>
+
+            <a href="/site-edit/{{ site.id }}">
+                編集
+            </a>
+
+            <a href="/site-delete/{{ site.id }}"
+            onclick="return confirm('本当に削除しますか？')">
+                削除
+            </a>
+
+        </td>
+    </td>
     </tr>
     {% endfor %}
 
