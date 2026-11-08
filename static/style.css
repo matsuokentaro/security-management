@@ -225,3 +225,26 @@ td{
     border-bottom:1px solid #ddd;
 }
 
+tr:hover{
+    background:#f8fafc;
+}
+
+.action-edit{
+    background:#0d6efd;
+    color:white;
+    padding:6px 10px;
+    border-radius:6px;
+    text-decoration:none;
+    margin-right:5px;
+}
+
+.action-delete{
+    background:#dc3545;
+    color:white;
+    padding:6px 10px;
+    border-radius:6px;
+    text-decoration:none;
+}
+
+
+

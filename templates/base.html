@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}警備管理システム{% endblock %}</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="layout">
+
+    <div class="sidebar">
+        <h2>🚓 警備管理</h2>
+
+        <a href="/dashboard">📊 ダッシュボード</a>
+        <a href="/guards">👮 隊員管理</a>
+        <a href="/sites">🏢 現場管理</a>
+        <a href="/shifts">📅 シフト管理</a>
+    </div>
+
+    <div class="main-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</div>
+
+</body>
+</html>

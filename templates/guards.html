@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>隊員管理</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
 
-<div class="container">
+{% block title %}隊員管理{% endblock %}
 
-<h1>👮‍♂️ 隊員管理 TEST</h1>
+{% block content %}
+
+<h1>👮‍♂️ 隊員管理</h1>
 
 <div style="margin-bottom:20px;">
     <a href="/guard-form">
@@ -21,7 +16,7 @@
 
 <div class="table-card">
 
-<table width="100%">
+<table>
 
     <tr>
         <th>ID</th>
@@ -41,17 +36,8 @@
         <td>{{ guard.status }}</td>
 
         <td>
-
-            <a class="action-edit" href="/edit/{{ guard.id }}">
-                編集
-            </a>
-
-            <a class="action-delete"
-            href="/delete/{{ guard.id }}"
-            onclick="return confirm('本当に削除しますか？')">
-                削除
-            </a>
-
+            <a href="/edit/{{ guard.id }}">編集</a>
+            <a href="/delete/{{ guard.id }}">削除</a>
         </td>
     </tr>
     {% endfor %}
@@ -60,7 +46,4 @@
 
 </div>
 
-</div>
-
-</body>
-</html>
+{% endblock %}
