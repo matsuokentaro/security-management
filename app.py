@@ -1,9 +1,13 @@
 from flask import Flask, render_template, request, redirect
 import sqlite3
-
+import os
 
 app = Flask(__name__)
+
 def init_db():
+
+    os.makedirs("database", exist_ok=True)
+
     conn = sqlite3.connect("database/guards.db")
     cursor = conn.cursor()
 
@@ -19,6 +23,7 @@ def init_db():
 
     conn.commit()
     conn.close()
+
 
 @app.route("/")
 def login():
@@ -154,16 +159,15 @@ def guard_form():
 
     return render_template("guard_form.html")
 
-
-if __name__ == "__main__":
-    init_db()
-    app.run(host="0.0.0.0", port=5000)
-
 @app.route("/sites")
 def sites():
     return "<h1>現場管理（作成中）</h1>"
 
-
 @app.route("/shifts")
 def shifts():
     return "<h1>シフト管理（作成中）</h1>"
+
+init_db()
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
