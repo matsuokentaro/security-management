@@ -4,8 +4,40 @@
 
 {% block content %}
 
-<h1>🚧 現場管理</h1>
+<h1>🏢 現場管理</h1>
 
-<p>現場管理機能は作成中です。</p>
+<div style="margin-bottom:20px;">
+    <a href="/site-form">
+        <button style="width:auto;">
+            ＋ 現場登録
+        </button>
+    </a>
+</div>
+
+<div class="table-card">
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>現場名</th>
+        <th>住所</th>
+        <th>担当者</th>
+        <th>備考</th>
+    </tr>
+
+    {% for site in sites %}
+    <tr>
+        <td>{{ site.id }}</td>
+        <td>{{ site.site_name }}</td>
+        <td>{{ site.address }}</td>
+        <td>{{ site.manager }}</td>
+        <td>{{ site.memo }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+</div>
 
 {% endblock %}

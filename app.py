@@ -14,17 +14,29 @@ def init_db():
     cursor = conn.cursor()
 
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS guards(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,
-        phone TEXT,
-        qualification TEXT,
-        status TEXT
-    )
-    """)
+        CREATE TABLE IF NOT EXISTS guards(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            phone TEXT,
+            qualification TEXT,
+            status TEXT
+        )
+        """)
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS sites(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            site_name TEXT,
+            address TEXT,
+            manager TEXT,
+            memo TEXT
+        )
+        """)
 
     conn.commit()
     conn.close()
+
+
 
 
 @app.route("/")
@@ -169,7 +181,50 @@ def guard_form():
 
 @app.route("/sites")
 def sites():
-    return "<h1>現場管理（作成中）</h1>"
+
+    conn = sqlite3.connect("database/guards.db")
+    conn.row_factory = sqlite3.Row
+
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM sites")
+
+    sites = cursor.fetchall()
+
+    conn.close()
+
+    return render_template(
+        "sites.html",
+        sites=sites
+    )
+
+@app.route("/site-form", methods=["GET", "POST"])
+def site_form():
+
+    if request.method == "POST":
+
+        site_name = request.form["site_name"]
+        address = request.form["address"]
+        manager = request.form["manager"]
+        memo = request.form["memo"]
+
+        conn = sqlite3.connect("database/guards.db")
+        cursor = conn.cursor()
+
+        cursor.execute("""
+        INSERT INTO sites
+        (site_name, address, manager, memo)
+        VALUES (?, ?, ?, ?)
+        """, (site_name, address, manager, memo))
+
+        conn.commit()
+        conn.close()
+
+        flash("現場を登録しました 🏢")
+
+        return redirect("/sites")
+
+    return render_template("site_form.html")
 
 @app.route("/shifts")
 def shifts():
